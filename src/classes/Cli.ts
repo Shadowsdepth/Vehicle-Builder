@@ -297,6 +297,7 @@ class Cli {
         } else {
           // TODO: if it is not, tow the selected vehicle then perform actions on the truck to allow the user to select another action
           truck.tow(answers.vehicleToTow);
+          console.log("Towing complete.");
           this.performActions();
         }
       });
@@ -392,6 +393,8 @@ class Cli {
           if (selectedVehicle instanceof Truck) {
             this.findVehicleToTow(selectedVehicle);
             return;
+          } else {
+            console.log("The selected vehicle is not a truck.");
           }
         }
         // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
@@ -399,6 +402,8 @@ class Cli {
           const selectedVehicle = this.vehicles.find(vehicle => vehicle.vin === this.selectedVehicleVin);
           if (selectedVehicle instanceof Motorbike) {
             selectedVehicle.wheelie();
+          } else {
+            console.log("The selected vehicle is not a motorbike.");
           }
         }
         else if (answers.action === 'Select or create another vehicle') {
